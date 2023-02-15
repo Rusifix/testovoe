@@ -1,0 +1,10 @@
+{% block content %}
+        {% for order in order %}
+        <h3>Сумма товаров - {{ order.sum }}</h3>
+        <form action="{% url 'create-checkout-session' item.id %}" method="POST">
+                {% csrf_token %}
+                <button id="checkout-button"> купить </button>
+        </form>
+    <a href="{% url 'orders_remove' orders.id %}">Очистить Orders</a>
+    {% endfor %}
+{% endblock %}

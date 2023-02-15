@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Тестовое задание</title>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+<section>
+    <div class="products">
+        {% for item in item %}
+        <h1> {{ item.name }} </h1>
+        <p>{{ item.get_descriptions }}</p>
+        <p>{{ item.get_price }}</p>
+        <div>
+            <form action="{% url 'create-checkout-session' item.id %}" method="POST">
+                {% csrf_token %}
+                <button id="checkout-button"> купить </button>
+            </form>
+        </div>
+        {% endfor %}
+{#                <a href="{% url 'orders_add' item.id %}">Добавить в Orders</a>#}
+{#        {% if order %}#}
+{#            {% include 'orders.html' %}#}
+{#        {% else %}#}
+{#            <p>Orders пуст</p>#}
+{#        {% endif %}#}
+    </div>
+</section>
+</body>
+</html>

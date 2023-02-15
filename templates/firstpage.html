@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Стартовая страничка</title>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align: center">
+            Список товаров
+        </h1>
+        <div class="content" style="text-align: center">
+            {% for item in item %}
+                <h4>{{ item.name }}</h4>
+                <p>{{ item.get_descriptions }}</p>
+                <p>{{ item.get_price }}</p>
+                <button>
+                    <a href="{% url 'landing-page'%}">Подробнее об товаре</a>
+                </button>
+                <button>Отправить в корзину</button>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
